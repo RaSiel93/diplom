@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'home#profile'
 
+  get '/profile', to: 'home#profile'
+  get '/schedule', to: 'home#schedule'
+  get '/marks', to: 'home#marks'
 
 
   # Example of regular route:
