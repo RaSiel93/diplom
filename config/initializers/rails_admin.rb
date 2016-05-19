@@ -51,4 +51,6 @@ RailsAdmin.config do |config|
       field :password
     end
   end
+
+  config.excluded_models << 'Role'
 end
