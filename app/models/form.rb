@@ -1,3 +1,4 @@
 class Form < ActiveRecord::Base
-  belongs_to :teacher, class_name: 'User'
+  has_one :teacher, class_name: 'User'
+  has_many :learners, class_name: 'User'
 end

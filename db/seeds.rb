@@ -1,7 +1,9 @@
 require 'ffaker'
 
-
 User.with_role(:admin).destroy_all
+User.with_role(:teacher).destroy_all
+User.with_role(:learner).destroy_all
+Form.destroy_all
 
 user = User.new({
   email: 'aleksandrpoplawskiy@gmail.com',
@@ -13,7 +15,6 @@ user.save
 puts 'Admin created'
 
 
-User.with_role(:teacher).destroy_all
 
 6.times do
   user = User.new({
@@ -27,20 +28,6 @@ end
 puts 'Teachers created'
 
 
-User.with_role(:learner).destroy_all
-
-30.times do
-  user = User.new({
-    email: FFaker::Internet.email,
-    password: FFaker::Internet.password
-  })
-  user.add_role :learner
-  user.save
-end
-
-puts 'Learners created'
-
-
 User.with_role(:teacher).each do |user|
   form = Form.new({
     grade: FFaker::Vehicle.year,
@@ -51,3 +38,17 @@ User.with_role(:teacher).each do |user|
 end
 
 puts 'Forms created'
+
+
+
+30.times do
+  user = User.new({
+    email: FFaker::Internet.email,
+    password: FFaker::Internet.password,
+    form: Form.all.sample
+  })
+  user.add_role :learner
+  user.save
+end
+
+puts 'Learners created'
