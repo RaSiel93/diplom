@@ -40,3 +40,14 @@ end
 
 puts 'Learners created'
 
+
+User.with_role(:teacher).each do |user|
+  form = Form.new({
+    grade: FFaker::Vehicle.year,
+    name: rand(5) + 6,
+    teacher: user
+  })
+  form.save
+end
+
+puts 'Forms created'
