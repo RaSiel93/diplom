@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 
 gem 'devise'
+gem 'rails_admin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
