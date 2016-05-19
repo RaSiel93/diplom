@@ -4,6 +4,7 @@ User.with_role(:admin).destroy_all
 User.with_role(:teacher).destroy_all
 User.with_role(:learner).destroy_all
 Form.destroy_all
+Subject.destroy_all
 
 user = User.new({
   email: 'aleksandrpoplawskiy@gmail.com',
@@ -52,3 +53,14 @@ puts 'Forms created'
 end
 
 puts 'Learners created'
+
+
+
+Subject.create(title: 'Физика')
+Subject.create(title: 'Химия')
+Subject.create(title: 'Математика')
+Subject.create(title: 'Биология')
+Subject.create(title: 'История')
+Subject.create(title: 'Английский язык')
+
+puts 'Subjects created'
