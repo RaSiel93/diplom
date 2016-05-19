@@ -38,4 +38,17 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'User' do
+    list do
+      field :email
+      field :roles
+    end
+
+    edit do
+      field :email
+      field :roles
+      field :password
+    end
+  end
 end
