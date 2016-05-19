@@ -7,4 +7,7 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    = yield
+    .container
+      .row.profile
+        = render 'layouts/menu'
+        = yield
