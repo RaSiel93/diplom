@@ -16,6 +16,8 @@ gem 'bootstrap-sass'
 
 gem 'devise'
 gem 'rails_admin'
+gem 'rolify'
+gem 'cancancan'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

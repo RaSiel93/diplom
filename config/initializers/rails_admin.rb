@@ -19,6 +19,10 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  # RailsAdmin.config do |config|
+  #   config.authorize_with :cancan
+  # end
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
