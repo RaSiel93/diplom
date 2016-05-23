@@ -7,7 +7,23 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tags
   body
-    .container
-      .row.profile
-        = render 'layouts/menu'
-        = yield
+
+    #scheduler_here.dhx_cal_container[style="width:100%; height:800px;"]
+      .dhx_cal_navline
+        .dhx_cal_prev_button &nbsp;
+        .dhx_cal_next_button &nbsp;
+        .dhx_cal_today_button
+        .dhx_cal_date
+        .dhx_cal_tab[name="day_tab", style="right:204px;"]
+        .dhx_cal_tab[name="week_tab", style="right:140px;"]
+        .dhx_cal_tab[name="month_tab", style="right:76px;"]
+      .dhx_cal_header
+      .dhx_cal_data
+    / .container
+    /   .row.profile
+    /     = render 'layouts/menu'
+    /     = yield
+
+javascript:
+  scheduler.init("scheduler_here");
+
