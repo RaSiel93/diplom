@@ -1,10 +1,9 @@
 require 'ffaker'
 
-User.with_role(:admin).destroy_all
-User.with_role(:teacher).destroy_all
-User.with_role(:learner).destroy_all
+User.destroy_all
 Form.destroy_all
 Subject.destroy_all
+FormsSubject.destroy_all
 
 user = User.new({
   email: 'aleksandrpoplawskiy@gmail.com',
@@ -14,7 +13,6 @@ user.add_role :admin
 user.save
 
 puts 'Admin created'
-
 
 
 6.times do
@@ -29,7 +27,7 @@ end
 puts 'Teachers created'
 
 
-User.with_role(:teacher).each do |user|
+Teacher.all.each do |user|
   form = Form.new({
     grade: FFaker::Vehicle.year,
     name: rand(5) + 6,
@@ -39,7 +37,6 @@ User.with_role(:teacher).each do |user|
 end
 
 puts 'Forms created'
-
 
 
 30.times do
@@ -55,7 +52,6 @@ end
 puts 'Learners created'
 
 
-
 Subject.create(title: 'Физика')
 Subject.create(title: 'Химия')
 Subject.create(title: 'Математика')
@@ -64,3 +60,12 @@ Subject.create(title: 'История')
 Subject.create(title: 'Английский язык')
 
 puts 'Subjects created'
+
+
+Form.all.each do |form|
+  Subject.all.each do |subject|
+    FormsSubject.create(form: form, subject: subject, teacher: Teacher.all.sample)
+  end
+end
+
+puts 'FormsSubject created'

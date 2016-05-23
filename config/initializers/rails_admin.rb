@@ -52,5 +52,17 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'FormsSubject' do
+    list do
+      field :teacher do
+        pretty_value do
+          value.email
+        end
+      end
+      field :subject
+      field :form
+    end
+  end
+
   config.excluded_models << 'Role'
 end
