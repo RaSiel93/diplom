@@ -15,18 +15,18 @@
     .profile-usermenu
       ul.nav
         li.active
-          a[href="#"]
+          = link_to rails_admin_path do
             i.glyphicon.glyphicon-home
-            |  Overview
+            | Кабинет управления
         li
-          a[href="#"]
-            i.glyphicon.glyphicon-user
-            |  Account Settings
-        li
-          a[href="#" target="_blank"]
+          = link_to schedules_path do
             i.glyphicon.glyphicon-ok
-            |  Tasks
+            | Расписание
         li
-          a[href="#"]
-            i.glyphicon.glyphicon-flag
-            |  Help
+          = link_to '#' do
+            i.glyphicon.glyphicon-user
+            | Классные журналы
+        li
+          = link_to '#' do
+            i.glyphicon.glyphicon-user
+            | Статистика

@@ -8,8 +8,12 @@ Rails.application.routes.draw do
   root 'home#profile'
 
   get '/profile', to: 'home#profile'
-  get '/schedule', to: 'home#schedule'
   get '/marks', to: 'home#marks'
+
+  # get '/schedules', to: 'home#schedules'
+  # get '/schedule', to: 'home#schedule'
+
+  resources :schedules, only: [:index, :create, :update, :destroy]
 
 
   # Example of regular route:
