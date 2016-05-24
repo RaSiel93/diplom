@@ -4,6 +4,7 @@ User.destroy_all
 Form.destroy_all
 Subject.destroy_all
 FormsSubject.destroy_all
+Schedule.destroy_all
 
 user = User.new({
   email: 'aleksandrpoplawskiy@gmail.com',
@@ -15,7 +16,7 @@ user.save
 puts 'Admin created'
 
 
-6.times do
+7.times do
   user = User.new({
     email: FFaker::Internet.email,
     password: FFaker::Internet.password
@@ -27,10 +28,11 @@ end
 puts 'Teachers created'
 
 
+name = 4
 Teacher.all.each do |user|
   form = Form.new({
     grade: FFaker::Vehicle.year,
-    name: rand(5) + 6,
+    name: name += 1,
     teacher: user
   })
   form.save
@@ -69,3 +71,14 @@ Form.all.each do |form|
 end
 
 puts 'FormsSubject created'
+
+
+Form.all.each do |form|
+  (0..4).to_a.each do |day|
+    (1..5).to_a.each do |number|
+      Schedule.create(forms_subject: form.forms_subjects.sample, day: day, number: number)
+    end
+  end
+end
+
+puts 'Schedule created'

@@ -1,64 +1,17 @@
 .col-md-9
   .profile-content
-    .text-center
-      h1 5 класс
-    table.table.table-bordered
-      th
-      th Понедельник
-      th Вторник
-      th Среда
-      th Четверг
-      th Пятница
-      tr
-        td 1
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 2
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 3
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 4
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 5
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 6
-        td
-        td
-        td
-        td
-        td
-      tr
-        td 7
-        td
-        td
-        td
-        td
-        td
-
-
-
-
+    - @forms.each do |form|
+      .text-center
+        h1 = "#{form.name} класс"
+      table.table.table-bordered
+        th
+        th Понедельник
+        th Вторник
+        th Среда
+        th Четверг
+        th Пятница
+        - (1..7).to_a.each do |number|
+          tr
+            td = number
+            - (0..4).to_a.each do |day|
+              td = print_subject(form, day, number)
