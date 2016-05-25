@@ -6,7 +6,7 @@
       .profile-usertitle-name
         | Marcus Doe
       .profile-usertitle-job
-        | Developer
+        = t("users.#{current_user.roles.first.name}")
     .profile-userbuttons
       button.btn.btn-success.btn-sm[type="button"]
         | Follow

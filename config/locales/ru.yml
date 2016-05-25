@@ -1,0 +1,6 @@
+ru:
+  users:
+    admin: 'администратор'
+    teacher: 'учитель'
+    learner: 'ученик'
+    parent: 'родитель'
