@@ -1,32 +1,31 @@
 .col-md-3
   .profile-sidebar
     .profile-userpic
-      img.img-responsive[src="http://cs630729.vk.me/v630729946/29597/--I-gmO9-BM.jpg" alt=""]
+      img.img-responsive[src="http://zdravo.by/content/images/UserDefaultImage.png" alt=""]
     .profile-usertitle
       .profile-usertitle-name
-        | Marcus Doe
+        = username
       .profile-usertitle-job
-        = t("users.#{current_user.roles.first.name}")
-    .profile-userbuttons
-      button.btn.btn-success.btn-sm[type="button"]
-        | Follow
-      button.btn.btn-danger.btn-sm[type="button"]
-        | Message
+        = user_role
     .profile-usermenu
       ul.nav
-        li.active
+        li
           = link_to rails_admin_path do
             i.glyphicon.glyphicon-home
-            | Кабинет управления
-        li
-          = link_to schedules_path do
-            i.glyphicon.glyphicon-ok
+            | Панель управления
+        li class=('active' if controller.controller_name == 'schedules')
+          = link_to schedule_path do
+            i.glyphicon.glyphicon-calendar
             | Расписание
-        li
-          = link_to '#' do
-            i.glyphicon.glyphicon-user
-            | Классные журналы
-        li
-          = link_to '#' do
-            i.glyphicon.glyphicon-user
+        li class=('active' if controller.controller_name == 'form_journals')
+          = link_to form_journals_path do
+            i.glyphicon.glyphicon-book
+            | Классный журнал
+        li class=('active' if controller.controller_name == 'statistics')
+          = link_to statistic_path do
+            i.glyphicon.glyphicon-stats
             | Статистика
+        li
+          = link_to destroy_user_session_path, method: :delete do
+            i.glyphicon.glyphicon-user
+            | Выйти
