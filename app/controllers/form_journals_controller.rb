@@ -1,6 +1,6 @@
 class FormJournalsController < ApplicationController
   def index
-    @forms
+    @forms = Form.all
   end
 
   def show

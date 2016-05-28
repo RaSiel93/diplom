@@ -9,6 +9,10 @@ html
   body
     .container
       .row.profile
-        = render 'layouts/menu' if current_user.present?
-        = yield
+        .col-md-3
+          .profile-sidebar
+            = render 'layouts/menu' if current_user.present?
+        .col-md-9
+          .profile-content
+            = yield
 

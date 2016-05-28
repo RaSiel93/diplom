@@ -1,17 +1,15 @@
-.col-md-9
-  .profile-content
-    - @forms.each do |form|
-      .text-center
-        h1 = "#{form.name} класс"
-      table.table.table-bordered
-        th
-        th Понедельник
-        th Вторник
-        th Среда
-        th Четверг
-        th Пятница
-        - (1..7).to_a.each do |number|
-          tr
-            td = number
-            - (0..4).to_a.each do |day|
-              td = print_subject(form, day, number)
+- @forms.each do |form|
+  .text-center
+    h1 = "#{form.name} класс"
+  table.table.table-bordered
+    th
+    th Понедельник
+    th Вторник
+    th Среда
+    th Четверг
+    th Пятница
+    - (1..7).to_a.each do |number|
+      tr
+        td = number
+        - (0..4).to_a.each do |day|
+          td = print_subject(form, day, number)

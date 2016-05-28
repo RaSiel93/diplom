@@ -1,31 +1,29 @@
-.col-md-3
-  .profile-sidebar
-    .profile-userpic
-      img.img-responsive[src="http://zdravo.by/content/images/UserDefaultImage.png" alt=""]
-    .profile-usertitle
-      .profile-usertitle-name
-        = username
-      .profile-usertitle-job
-        = user_role
-    .profile-usermenu
-      ul.nav
-        li
-          = link_to rails_admin_path do
-            i.glyphicon.glyphicon-home
-            | Панель управления
-        li class=('active' if controller.controller_name == 'schedules')
-          = link_to schedule_path do
-            i.glyphicon.glyphicon-calendar
-            | Расписание
-        li class=('active' if controller.controller_name == 'form_journals')
-          = link_to form_journals_path do
-            i.glyphicon.glyphicon-book
-            | Классный журнал
-        li class=('active' if controller.controller_name == 'statistics')
-          = link_to statistic_path do
-            i.glyphicon.glyphicon-stats
-            | Статистика
-        li
-          = link_to destroy_user_session_path, method: :delete do
-            i.glyphicon.glyphicon-user
-            | Выйти
+.profile-userpic
+  img.img-responsive[src="http://zdravo.by/content/images/UserDefaultImage.png" alt=""]
+.profile-usertitle
+  .profile-usertitle-name
+    = username
+  .profile-usertitle-job
+    = user_role
+.profile-usermenu
+  ul.nav
+    li
+      = link_to rails_admin_path do
+        i.glyphicon.glyphicon-home
+        | Панель управления
+    li class=('active' if controller.controller_name == 'schedules')
+      = link_to schedule_path do
+        i.glyphicon.glyphicon-calendar
+        | Расписание
+    li class=('active' if controller.controller_name == 'form_journals')
+      = link_to form_journals_path do
+        i.glyphicon.glyphicon-book
+        | Классный журнал
+    li class=('active' if controller.controller_name == 'statistics')
+      = link_to statistic_path do
+        i.glyphicon.glyphicon-stats
+        | Статистика
+    li
+      = link_to destroy_user_session_path, method: :delete do
+        i.glyphicon.glyphicon-user
+        | Выйти
