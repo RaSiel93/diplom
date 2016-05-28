@@ -1,0 +1,14 @@
+.text-center
+  h1 = "#{@form_subject.form.name} класс - #{@form_subject.subject.title}"
+  h5 = @form_subject.teacher.email
+  table.table.table-bordered.journal
+    tr
+      th
+      - @dates.each do |date|
+        th
+          = date.strftime('%m/%d')
+    - @form_subject.form.learners.each do |learner|
+      tr
+        td = learner.email
+        - @dates.each do |date|
+          td

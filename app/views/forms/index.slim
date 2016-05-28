@@ -1,0 +1,6 @@
+- @forms.each do |form|
+  h2 Журнал #{form.name} класса
+  ul.list-group
+    - form.subjects.each do |subject|
+      li.list-group-item = link_to "#{subject.title}, #{teacher(form, subject).email}", form_subject_path(form, subject)
+

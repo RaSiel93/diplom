@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   resources :form_journals
   resource :schedule
   resource :statistic
+
+  resources :forms do
+    resources :subjects
+  end
 end
