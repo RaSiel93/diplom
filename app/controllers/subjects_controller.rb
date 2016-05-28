@@ -1,7 +1,7 @@
 class SubjectsController < ApplicationController
   def show
-    @form_subject = FormsSubject.find_by(form_id: params[:form_id], subject_id: params[:id])
-    @dates = full_dates.select{|day| @form_subject.schedules.pluck(:day).include?(day.wday - 1)}
+    @forms_subject = FormsSubject.find_by(form_id: params[:form_id], subject_id: params[:id])
+    @dates = full_dates.select{|day| @forms_subject.schedules.pluck(:day).include?(day.wday - 1)}
   end
 
   private

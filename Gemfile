@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim'
 gem 'slim-rails'
 gem 'bootstrap-sass'
+gem 'bootstrap-modal-rails'
 
 gem 'devise'
 gem 'rails_admin'

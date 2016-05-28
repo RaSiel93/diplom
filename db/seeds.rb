@@ -5,8 +5,10 @@ Form.destroy_all
 Subject.destroy_all
 FormsSubject.destroy_all
 Schedule.destroy_all
+Mark.destroy_all
 
 user = User.new({
+  name: FFaker::NameRU.name,
   email: 'aleksandrpoplawskiy@gmail.com',
   password: '11111111'
 })
@@ -17,12 +19,13 @@ puts 'Admin created'
 
 
 7.times do
-  user = User.new({
+  teacher = Teacher.new({
+    name: FFaker::NameRU.name,
     email: FFaker::Internet.email,
     password: FFaker::Internet.password
   })
-  user.add_role :teacher
-  user.save
+  teacher.add_role :teacher
+  teacher.save
 end
 
 puts 'Teachers created'
@@ -42,13 +45,14 @@ puts 'Forms created'
 
 
 30.times do
-  user = User.new({
+  learner = Learner.new({
+    name: FFaker::NameRU.name,
     email: FFaker::Internet.email,
     password: FFaker::Internet.password,
     form: Form.all.sample
   })
-  user.add_role :learner
-  user.save
+  learner.add_role :learner
+  learner.save
 end
 
 puts 'Learners created'
@@ -70,7 +74,7 @@ Form.all.each do |form|
   end
 end
 
-puts 'FormsSubject created'
+puts 'FormsSubjects created'
 
 
 Form.all.each do |form|
@@ -81,4 +85,17 @@ Form.all.each do |form|
   end
 end
 
-puts 'Schedule created'
+puts 'Schedules created'
+
+
+FormsSubject.all.each do |forms_subject|
+  full_dates = (Date.new(2016, 9, 1)..Date.new(2017, 1, 1)).to_a
+  dates = full_dates.select{|day| forms_subject.schedules.pluck(:day).include?(day.wday - 1)}
+  dates.each do |date|
+    forms_subject.form.learners.sample(rand(4) + 1).each do |learner|
+      Mark.create(forms_subject: forms_subject, learner: learner, date: date, value: rand(6) + 4)
+    end
+  end
+end
+
+puts 'Marks created'

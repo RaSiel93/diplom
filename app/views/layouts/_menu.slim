@@ -2,7 +2,7 @@
   img.img-responsive[src="http://zdravo.by/content/images/UserDefaultImage.png" alt=""]
 .profile-usertitle
   .profile-usertitle-name
-    = username
+    = current_user.name
   .profile-usertitle-job
     = user_role
 .profile-usermenu
@@ -15,7 +15,7 @@
       = link_to schedule_path do
         i.glyphicon.glyphicon-calendar
         | Расписание
-    li class=('active' if controller.controller_name == 'form_journals')
+    li class=('active' if ['forms', 'subjects'].include?(controller.controller_name))
       = link_to forms_path do
         i.glyphicon.glyphicon-book
         | Классный журнал

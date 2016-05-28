@@ -1,14 +1,38 @@
 .text-center
-  h1 = "#{@form_subject.form.name} класс - #{@form_subject.subject.title}"
-  h5 = @form_subject.teacher.email
-  table.table.table-bordered.journal
+  h1 = "#{@forms_subject.form.name} класс - #{@forms_subject.subject.title}"
+  h5 = @forms_subject.teacher.name
+  table.table.table-bordered.journal data-forms-subject-id=@forms_subject.id
     tr
       th
       - @dates.each do |date|
         th
           = date.strftime('%m/%d')
-    - @form_subject.form.learners.each do |learner|
+    - @forms_subject.form.learners.each do |learner|
       tr
-        td = learner.email
+        td = learner.name
         - @dates.each do |date|
-          td
+          - mark = mark(learner, @forms_subject, date)
+
+          td[data-learner-id=learner.id data-date=date data-mark=mark.try(:value)]
+            = mark.try(:value)
+
+
+#myModal.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h4#myModalLabel.modal-title
+      .modal-body
+        form
+          .form-group
+            label.control-label[for="recipient-name"]
+              | Оценка:
+            input#recipient-name.form-control[type="text"]
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Закрыть
+        button#save.btn.btn-primary[type="button"]
+          | Сохранить

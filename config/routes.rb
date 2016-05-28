@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resource :statistic
 
   resources :forms do
-    resources :subjects
+    resources :subjects do
+      resources :marks
+    end
   end
 end
