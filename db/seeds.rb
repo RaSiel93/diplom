@@ -92,8 +92,9 @@ FormsSubject.all.each do |forms_subject|
   full_dates = (Date.new(2016, 9, 1)..Date.new(2017, 1, 1)).to_a
   dates = full_dates.select{|day| forms_subject.schedules.pluck(:day).include?(day.wday - 1)}
   dates.each do |date|
+    coeff = rand(5)
     forms_subject.form.learners.sample(rand(4) + 1).each do |learner|
-      Mark.create(forms_subject: forms_subject, learner: learner, date: date, value: rand(6) + 4)
+      Mark.create(forms_subject: forms_subject, learner: learner, date: date, value: rand(5) + coeff)
     end
   end
 end

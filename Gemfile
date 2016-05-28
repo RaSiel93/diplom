@@ -21,6 +21,9 @@ gem 'devise'
 gem 'rails_admin'
 gem 'rolify'
 gem 'cancancan'
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

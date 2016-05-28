@@ -1,0 +1,4 @@
+/ = line_chart @forms.map{ |form| { name: "#{form.name} класс", date:  [Hash[Time.zone.now, 1, Time.zone.now + 1.day, 2]] } }
+
+= line_chart @forms.map{ |form| { name: "#{form.name} класс", data: form.marks.group("date_trunc('week', date)").median(:value) } }, width: "800px", height: "300px", min: 0, max: 10, discrete: true, label: "Средняя успеваемость учащихся", xtitle: "Дата", ytitle: "Средняя оценка"
+
